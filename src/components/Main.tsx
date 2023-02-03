@@ -5,6 +5,9 @@ const Wrapper = styled.div`
 `;
 
 const Main = () => {
+  window.addEventListener('message', event => {
+    console.log(event.data);
+  });
   return <Wrapper>Main</Wrapper>;
 };
 
