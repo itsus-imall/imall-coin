@@ -7,7 +7,7 @@ import PickButton from '../PickButton';
 import CustomModal from '../../components/CustomModal';
 import MainModal from './MainModal';
 
-interface ICoin {
+export interface ICoin {
   total?: number;
   order?: [];
 }
@@ -17,6 +17,7 @@ const Main = () => {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<null | {}>(null);
   const [modalShow, setModalShow] = useState(false);
+  const [zeroCoin, setZeroCoin] = useState(true);
 
   useEffect(() => {
     window.addEventListener('message', event => {
@@ -46,10 +47,14 @@ const Main = () => {
   return (
     <S.Wrapper>
       {coin.total}
-      <PickButton setModalShow={setModalShow} />
+      <PickButton
+        setModalShow={setModalShow}
+        message={message}
+        setZeroCoin={setZeroCoin}
+      />
       {modalShow ? (
         <CustomModal setModalShow={setModalShow}>
-          <MainModal setModalShow={setModalShow} />
+          <MainModal setModalShow={setModalShow} zeroCoin={zeroCoin} />
         </CustomModal>
       ) : null}
     </S.Wrapper>
