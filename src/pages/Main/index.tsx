@@ -3,6 +3,9 @@ import axios from 'axios';
 
 import * as S from './styled';
 import Loading from '../../components/Loading';
+import PickButton from '../PickButton';
+import CustomModal from '../../components/CustomModal';
+import MainModal from './MainModal';
 
 interface ICoin {
   total?: number;
@@ -13,10 +16,11 @@ const Main = () => {
   const [coin, setCoin] = useState<ICoin>({});
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<null | {}>(null);
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     window.addEventListener('message', event => {
-      if (event.origin !== 'https://youngwuk2.cafe24.com') return;
+      if (event.origin !== process.env.REACT_APP_MESSEAGE_ORIGIN) return;
       // setMessage({ userId: event.data.userId, type: event.data.type }); // 아이프레임 실제
     });
     setMessage({ userId: '1351744123@k', type: 'coin' }); // 테스트
@@ -26,7 +30,7 @@ const Main = () => {
     if (!message) return;
     const getCoin = async () => {
       const { data } = await axios.post(
-        'https://itsus.co.kr:5555/api/imall/getMemo',
+        process.env.REACT_APP_GET_MEMO_URL!,
         message,
       );
       setCoin(data);
@@ -35,7 +39,21 @@ const Main = () => {
     getCoin();
   }, [message]);
 
-  return <S.Wrapper>{loading ? <Loading /> : coin.total}</S.Wrapper>;
+  if (loading) {
+    return <Loading />;
+  }
+
+  return (
+    <S.Wrapper>
+      {coin.total}
+      <PickButton setModalShow={setModalShow} />
+      {modalShow ? (
+        <CustomModal setModalShow={setModalShow}>
+          <MainModal setModalShow={setModalShow} />
+        </CustomModal>
+      ) : null}
+    </S.Wrapper>
+  );
 };
 
 export default Main;
