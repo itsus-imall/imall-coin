@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 
-const Wrapper = styled.div`
-  width: 100%;
-`;
+import * as S from './styled';
+import Loading from '../../components/Loading';
 
 interface ICoin {
   total?: number;
@@ -19,9 +17,9 @@ const Main = () => {
   useEffect(() => {
     window.addEventListener('message', event => {
       if (event.origin !== 'https://youngwuk2.cafe24.com') return;
-      // setMessage({ userId: event.data.userId, type: event.data.type });
+      // setMessage({ userId: event.data.userId, type: event.data.type }); // 아이프레임 실제
     });
-    setMessage({ userId: '1351744123@k', type: 'coin' });
+    setMessage({ userId: '1351744123@k', type: 'coin' }); // 테스트
   }, []);
 
   useEffect(() => {
@@ -37,7 +35,7 @@ const Main = () => {
     getCoin();
   }, [message]);
 
-  return <Wrapper>{loading ? 'loading' : coin.total}</Wrapper>;
+  return <S.Wrapper>{loading ? <Loading /> : coin.total}</S.Wrapper>;
 };
 
 export default Main;
