@@ -17,7 +17,7 @@ const Main = () => {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<null | {}>(null);
   const [modalShow, setModalShow] = useState(false);
-  const [zeroCoin, setZeroCoin] = useState(true);
+  const [prize, setPrize] = useState('');
 
   useEffect(() => {
     window.addEventListener('message', event => {
@@ -39,7 +39,7 @@ const Main = () => {
     };
     getCoin();
   }, [message]);
-
+  console.log(coin);
   if (loading) {
     return <Loading />;
   }
@@ -50,11 +50,12 @@ const Main = () => {
       <PickButton
         setModalShow={setModalShow}
         message={message}
-        setZeroCoin={setZeroCoin}
+        setPrize={setPrize}
+        setCoin={setCoin}
       />
       {modalShow ? (
         <CustomModal setModalShow={setModalShow}>
-          <MainModal setModalShow={setModalShow} zeroCoin={zeroCoin} />
+          <MainModal setModalShow={setModalShow} prize={prize} />
         </CustomModal>
       ) : null}
     </S.Wrapper>
