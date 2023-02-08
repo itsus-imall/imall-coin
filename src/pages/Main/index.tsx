@@ -39,7 +39,7 @@ const Main = () => {
     };
     getCoin();
   }, [message]);
-  console.log(coin);
+
   if (loading) {
     return <Loading />;
   }
@@ -53,6 +53,7 @@ const Main = () => {
         setPrize={setPrize}
         setCoin={setCoin}
       />
+
       {modalShow ? (
         <CustomModal setModalShow={setModalShow}>
           <MainModal setModalShow={setModalShow} prize={prize} />
