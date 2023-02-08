@@ -22,7 +22,7 @@ const PickButton = ({ setModalShow, message, setPrize, setCoin }: IProps) => {
     setPrize(res.data.prize);
   };
 
-  return <S.Button onClick={PickButtonHandler}>뽑기</S.Button>;
+  return <S.Button onClick={PickButtonHandler}>뽑기버튼</S.Button>;
 };
 
 export default PickButton;
