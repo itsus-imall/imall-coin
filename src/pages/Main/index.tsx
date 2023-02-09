@@ -53,7 +53,6 @@ const Main = () => {
         setPrize={setPrize}
         setCoin={setCoin}
       />
-
       {modalShow ? (
         <CustomModal setModalShow={setModalShow}>
           <MainModal setModalShow={setModalShow} prize={prize} />
