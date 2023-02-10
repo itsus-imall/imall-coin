@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import * as S from './styled';
+
 import Loading from '../../components/Loading';
-import PickButton from '../PickButton';
 import CustomModal from '../../components/CustomModal';
 import MainModal from './MainModal';
+import PickButton from '../../components/PickButton';
 
 export interface ICoin {
   total?: number;
@@ -46,13 +47,15 @@ const Main = () => {
 
   return (
     <S.Wrapper>
-      {coin.total}
-      <PickButton
-        setModalShow={setModalShow}
-        message={message}
-        setPrize={setPrize}
-        setCoin={setCoin}
-      />
+      <S.ContentWrapper>
+        <div>{coin.total}</div>
+        <PickButton
+          setModalShow={setModalShow}
+          message={message}
+          setPrize={setPrize}
+          setCoin={setCoin}
+        />
+      </S.ContentWrapper>
       {modalShow ? (
         <CustomModal setModalShow={setModalShow}>
           <MainModal setModalShow={setModalShow} prize={prize} />
