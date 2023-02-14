@@ -5,10 +5,11 @@ const Give = () => {
   useEffect(() => {
     window.addEventListener('message', async event => {
       // if (event.origin !== process.env.REACT_APP_MESSEAGE_ORIGIN) return;
-      const { orderNumber, userId } = event.data;
+      const { orderNumber, userId, type } = event.data;
       await axios.post('https://itsus.co.kr:5555/api/imall/giveCoin', {
         orderNumber,
         userId,
+        type,
       });
     });
   }, []);
