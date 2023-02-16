@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+interface ICoinAmount {
+  coinAmount: number | boolean | null;
+}
+
 const Give = () => {
-  const [coinAmount, setCoinAmount] = useState<number | boolean>(0);
+  const [coinAmount, setCoinAmount] = useState<ICoinAmount | null>(null);
   useEffect(() => {
     window.addEventListener('message', async event => {
       // if (event.origin !== process.env.REACT_APP_MESSEAGE_ORIGIN) return;
@@ -19,7 +23,11 @@ const Give = () => {
       setCoinAmount(result.data);
     });
   }, []);
-  console.log(coinAmount);
+  useEffect(() => {
+    if (!coinAmount) return;
+    window.parent.postMessage(coinAmount, '*');
+  }, [coinAmount]);
+
   return null;
 };
 
