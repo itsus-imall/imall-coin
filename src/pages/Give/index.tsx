@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import CustomModal from '../../components/CustomModal';
 
 const message: Record<string, string> = {
   'zero-coin': '코인을 받을 수 없는 주문건입니다.',
@@ -14,14 +13,11 @@ interface ICoinAmount {
 
 const Give = () => {
   const [coinState, setCoinState] = useState<ICoinAmount | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
   useEffect(() => {
     window.addEventListener('message', async event => {
       // if (event.origin !== process.env.REACT_APP_MESSEAGE_ORIGIN) return;
       const { orderNumber, userId, type } = event.data;
-      if (!orderNumber && !userId && type === 'webpackClose') return;
-      setLoading(true);
+      if (!orderNumber || !userId || type === 'webpackClose') return;
       const result = await axios.post(
         'https://itsus.co.kr:5555/api/imall/giveCoin',
         {
@@ -31,8 +27,6 @@ const Give = () => {
         },
       );
       setCoinState(result.data);
-      setLoading(false);
-      setModalShow(true);
     });
   }, []);
   useEffect(() => {
@@ -40,11 +34,7 @@ const Give = () => {
     window.parent.postMessage(message[coinState.status] ?? coinState, '*');
   }, [coinState]);
 
-  return (
-    <>
-      {loading ? <CustomModal setModalShow={setModalShow}></CustomModal> : null}
-    </>
-  );
+  return null;
 };
 
 export default Give;
