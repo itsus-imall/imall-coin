@@ -1,22 +1,18 @@
-import { Dispatch, SetStateAction } from 'react';
 import { createPortal } from 'react-dom';
 import * as S from './styled';
 
 interface IProps {
   children?: React.ReactNode;
-  setModalShow: Dispatch<SetStateAction<boolean>>;
 }
 
-const CustomModal = ({ children, setModalShow }: IProps) => {
+const CustomModal = ({ children }: IProps) => {
   const potalElement = document.querySelector('#modal');
-
-  const onClick = () => setModalShow(false);
 
   return (
     <>
       {createPortal(
         <S.Wrapper>
-          <S.Overlay onClick={onClick} />
+          <S.Overlay />
           {children}
         </S.Wrapper>,
         potalElement!,

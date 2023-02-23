@@ -28,7 +28,7 @@ const PickButton = ({ setModalShow, message, setPrize, setCoin }: IProps) => {
 
   return (
     <S.Button onClick={PickButtonHandler} disabled={loading}>
-      뽑기버튼
+      상품뽑기
     </S.Button>
   );
 };
