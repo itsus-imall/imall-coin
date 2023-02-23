@@ -12,7 +12,7 @@ const AdminLoginForm = ({ setLogin }: IProps) => {
     event.preventDefault();
     const password = passwordRef.current!.value;
     const { data: loginStatus } = await axios.post(
-      'https://itsus.co.kr:5555/api/imall/adminLogin',
+      'https://itsus.co.kr:5555/api/imall/admin/login',
       {
         password,
       },
