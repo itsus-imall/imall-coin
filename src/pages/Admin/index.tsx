@@ -30,7 +30,12 @@ const Admin = () => {
         coinAmount,
       },
     );
-    console.log(message[result.status]);
+    alert(
+      message[result.status] ??
+        `${Math.abs(result.coinAmount)}개의 마음이 ${
+          result.coinAmount > 0 ? '증가' : '차감'
+        } 되었습니다.`,
+    );
   };
 
   const Form = styled.form`
