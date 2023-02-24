@@ -8,11 +8,14 @@ export const Wrapper = styled.section`
   padding: 30px;
   box-sizing: border-box;
   position: relative;
+  border-radius: 15px 15px 0 0;
 `;
 
 export const Contents = styled.div`
   width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
 
 export const CheckButton = styled.button`
@@ -27,4 +30,5 @@ export const CheckButton = styled.button`
   font-size: 18px;
   color: #fff;
   border: 0;
+  border-radius: 0 0 15px 15px;
 `;

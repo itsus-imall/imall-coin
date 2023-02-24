@@ -16,6 +16,7 @@ const message: Record<string, boolean> = {
 
 const MainModal = ({ setModalShow, prize, userId }: IProps) => {
   const [productPrize, setProductPrize] = useState(false);
+  const [clickCounter, setClickCounter] = useState(3);
 
   useEffect(() => {
     message[prize] && setProductPrize(true);
@@ -23,7 +24,6 @@ const MainModal = ({ setModalShow, prize, userId }: IProps) => {
 
   const modalCheckHandler = (info?: {}) => {
     if (productPrize) {
-      console.log(info, userId);
       axios.post('https://itsus.co.kr:5555/api/imall/prize/info', {
         userId,
         ...info,
