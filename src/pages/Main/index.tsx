@@ -69,7 +69,11 @@ const Main = () => {
       </S.ContentWrapper>
       {modalShow ? (
         <CustomModal>
-          <MainModal setModalShow={setModalShow} prize={prize} />
+          <MainModal
+            setModalShow={setModalShow}
+            prize={prize}
+            userId={message!.userId}
+          />
         </CustomModal>
       ) : null}
     </S.Wrapper>
