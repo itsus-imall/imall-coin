@@ -13,6 +13,7 @@ const Admin = () => {
 
   const coinAmountRef = useRef<HTMLInputElement>(null);
   const userIdRef = useRef<HTMLInputElement>(null);
+  const reasonRef = useRef<HTMLInputElement>(null);
 
   if (!login) {
     return <AdminLoginForm setLogin={setLogin} />;
@@ -22,12 +23,15 @@ const Admin = () => {
     event.preventDefault();
     const userId = userIdRef.current!.value;
     const coinAmount = coinAmountRef.current!.value;
-    if (userId === '' || coinAmount === '') return alert('빈칸을 입력하세요.');
+    const reason = reasonRef.current!.value;
+    if (userId === '' || coinAmount === '' || reason === '')
+      return alert('빈칸을 입력하세요.');
     const { data: result } = await axios.post(
       'https://itsus.co.kr:5555/api/imall/admin/coin',
       {
         userId,
         coinAmount,
+        reason,
       },
     );
     alert(
@@ -53,9 +57,10 @@ const Admin = () => {
       <input type='text' placeholder='고객 아이디' ref={userIdRef} />
       <input
         type='number'
-        placeholder='마음 갯수 ( 차감은 -9, 증감은 9 )'
+        placeholder='마음 갯수 (차감은 -9, 증감은 9)'
         ref={coinAmountRef}
       />
+      <input type='text' placeholder='사유 (필수입력)' ref={reasonRef} />
       <button>변경</button>
     </Form>
   );
