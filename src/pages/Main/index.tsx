@@ -27,8 +27,14 @@ const Main = () => {
 
   useEffect(() => {
     window.addEventListener('message', event => {
-      // if (event.origin !== 'https://youngwuk2.cafe24.com') return;
-      // setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
+      if (
+        event.origin === 'https://youngwuk2.cafe24.com' ||
+        event.origin === 'https://i-m-all.com' ||
+        event.origin === 'https://m.i-m-all.com' ||
+        event.origin === 'https://www.i-m-all.com'
+      ) {
+        // setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
+      }
     });
     setMessage({ userId: '1351744123@k', type: 'coin' }); // 테스트
   }, []);
@@ -58,13 +64,14 @@ const Main = () => {
     <S.Wrapper>
       <S.ContentWrapper>
         <>
+          <img src='/images/background.jpg' alt='상품모음' />
+          <div>보유중인 마음 갯수 : {coin.total}개</div>
           <PickButton
             setModalShow={setModalShow}
             message={message}
             setPrize={setPrize}
             setCoin={setCoin}
           />
-          <div>보유중인 마음 갯수 : {coin.total}개</div>
         </>
       </S.ContentWrapper>
       {modalShow ? (

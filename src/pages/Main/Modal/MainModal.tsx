@@ -14,9 +14,17 @@ const message: Record<string, boolean> = {
   '신세계 백화점 상품권 10만원': true,
 };
 
+const prizeImg: Record<string, string> = {
+  'iPad Air 10.9 Wi-Fi 64GB': '/images/이벤트상품_아이패드.png',
+  '에어팟 3세대': '/images/이벤트상품_에어팟.png',
+  '신세계 백화점 상품권 10만원': '/images/이벤트상품_상품권.png',
+  '적립금 30,000원': '/images/이벤트상품_고액적립금.png',
+  '적립금 10,000원': '/images/이벤트상품_고액적립금.png',
+};
+
 const MainModal = ({ setModalShow, prize, userId }: IProps) => {
   const [productPrize, setProductPrize] = useState(false);
-  const [clickCounter, setClickCounter] = useState(3);
+  const [clickCounter, setClickCounter] = useState(1);
 
   useEffect(() => {
     message[prize] && setProductPrize(true);
@@ -33,19 +41,62 @@ const MainModal = ({ setModalShow, prize, userId }: IProps) => {
     setModalShow(false);
   };
 
-  return (
-    <S.Wrapper>
-      <S.Contents>
-        <p>
-          {prize !== ''
-            ? `축하드립니다 ${prize}이(가) 당첨되었습니다!`
-            : '코인이 없습니다!'}
-        </p>
+  const PrizeOpen = () => {
+    return (
+      <>
+        {prize === '' ? (
+          '사용할 코인이 없습니다.'
+        ) : (
+          <img
+            className='box'
+            src={`/images/이벤트상자_00${clickCounter}.jpg`}
+            alt='선물상자'
+          />
+        )}
+        <S.CheckButton>
+          {prize === '' ? '닫기' : '선물을 받을려면 화면을 클릭하세요!'}
+        </S.CheckButton>
+      </>
+    );
+  };
+
+  const PrizeResult = () => {
+    return (
+      <>
+        <div className='content'>
+          <img
+            className='box'
+            src='/images/이벤트상자_004.jpg'
+            alt='선물상자'
+          />
+          <img
+            className='prize'
+            src={prizeImg[prize] ?? '/images/이벤트상품_저액적립금.png'}
+            alt='상품'
+          />
+        </div>
+        <h2 className='content-title'>축하합니다</h2>
+        <p className='prize-title'>{prize}</p>
+        <p>당첨되셨습니다!</p>
         {productPrize ? (
           <PrizeProdutForm modalCheckHandler={modalCheckHandler} />
         ) : (
           <S.CheckButton onClick={modalCheckHandler}>확인</S.CheckButton>
         )}
+      </>
+    );
+  };
+
+  const prizeOpenHandler = () => {
+    if (prize === '') setModalShow(false);
+    if (clickCounter > 3) return;
+    setClickCounter(prev => prev + 1);
+  };
+
+  return (
+    <S.Wrapper>
+      <S.Contents onClick={prizeOpenHandler}>
+        {clickCounter > 3 ? <PrizeResult /> : <PrizeOpen />}
       </S.Contents>
     </S.Wrapper>
   );

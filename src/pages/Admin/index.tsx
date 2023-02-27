@@ -9,7 +9,7 @@ const Admin = () => {
     'minus-coin': '차감할 마음이 없습니다.',
   };
 
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
 
   const coinAmountRef = useRef<HTMLInputElement>(null);
   const userIdRef = useRef<HTMLInputElement>(null);
