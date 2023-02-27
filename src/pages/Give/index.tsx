@@ -16,20 +16,27 @@ const Give = () => {
   const [coinState, setCoinState] = useState<ICoinAmount | null>(null);
   useEffect(() => {
     window.addEventListener('message', async event => {
-      // if (event.origin !== process.env.REACT_APP_MESSEAGE_ORIGIN) return;
-      const { orderNumber, userId, type } = event.data;
-      if (!orderNumber || !userId || type === 'webpackClose') return;
-      const result = await axios.post(
-        'https://itsus.co.kr:5555/api/imall/giveCoin',
-        {
-          orderNumber,
-          userId,
-          type,
-        },
-      );
-      setCoinState(result.data);
+      if (
+        event.origin === 'https://youngwuk2.cafe24.com' ||
+        event.origin === 'https://i-m-all.com' ||
+        event.origin === 'https://m.i-m-all.com' ||
+        event.origin === 'https://www.i-m-all.com'
+      ) {
+        const { orderNumber, userId, type } = event.data;
+        if (!orderNumber || !userId || type === 'webpackClose') return;
+        const result = await axios.post(
+          'https://itsus.co.kr:5555/api/imall/giveCoin',
+          {
+            orderNumber,
+            userId,
+            type,
+          },
+        );
+        setCoinState(result.data);
+      }
     });
   }, []);
+
   useEffect(() => {
     if (!coinState) return;
     window.parent.postMessage(

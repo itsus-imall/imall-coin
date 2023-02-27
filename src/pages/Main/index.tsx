@@ -33,10 +33,9 @@ const Main = () => {
         event.origin === 'https://m.i-m-all.com' ||
         event.origin === 'https://www.i-m-all.com'
       ) {
-        // setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
+        setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
       }
     });
-    setMessage({ userId: '1351744123@k', type: 'coin' }); // 테스트
   }, []);
 
   useEffect(() => {
