@@ -33,8 +33,9 @@ const Main = () => {
         event.origin === 'https://m.i-m-all.com' ||
         event.origin === 'https://www.i-m-all.com'
       ) {
-        setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
+        // setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
       }
+      setMessage({ userId: null, type: 'coin' }); // 아이프레임 실제
     });
   }, []);
 
@@ -55,33 +56,45 @@ const Main = () => {
     return <Loading />;
   }
 
-  if (!message!.userId) {
-    return <div>로그인 후 이용해주세요.</div>;
-  }
+  const loginHandler = () => {
+    window.parent.postMessage('login', '*');
+  };
 
   return (
     <S.Wrapper>
       <S.ContentWrapper>
         <>
           <img src='/images/background.jpg' alt='상품모음' />
-          <div>보유중인 마음 갯수 : {coin.total}개</div>
-          <PickButton
-            setModalShow={setModalShow}
-            message={message}
-            setPrize={setPrize}
-            setCoin={setCoin}
+          {message!.userId ? (
+            <>
+              <div>보유중인 마음 갯수 : {coin.total}개</div>
+              <PickButton
+                setModalShow={setModalShow}
+                message={message}
+                setPrize={setPrize}
+                setCoin={setCoin}
+              />
+              {modalShow ? (
+                <CustomModal>
+                  <MainModal
+                    setModalShow={setModalShow}
+                    prize={prize}
+                    userId={message!.userId}
+                  />
+                </CustomModal>
+              ) : null}
+            </>
+          ) : (
+            <button className='login' onClick={loginHandler}>
+              로그인 후 이용해주세요.
+            </button>
+          )}
+          <img
+            src='https://img.i-m-all.com/자사몰/이벤트/2023마음이벤트/고객감사이벤트_04.jpg'
+            alt='무슨상품?'
           />
         </>
       </S.ContentWrapper>
-      {modalShow ? (
-        <CustomModal>
-          <MainModal
-            setModalShow={setModalShow}
-            prize={prize}
-            userId={message!.userId}
-          />
-        </CustomModal>
-      ) : null}
     </S.Wrapper>
   );
 };

@@ -15,4 +15,13 @@ export const ContentWrapper = styled.div`
   img {
     width: 100%;
   }
+  .login {
+    background: var(--red);
+    padding: 25px 50px;
+    color: #fff;
+    border-radius: 15px;
+    border: 0;
+    font-size: 18px;
+    cursor: pointer;
+  }
 `;
