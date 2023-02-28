@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 import * as S from './styled';
@@ -24,9 +24,18 @@ const Main = () => {
   const [message, setMessage] = useState<null | IMessage>(null);
   const [modalShow, setModalShow] = useState(false);
   const [prize, setPrize] = useState('');
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.addEventListener('message', event => {
+    if (bodyRef.current) {
+      contentHeightHandler();
+    }
+  }, [imageLoaded]);
+
+  useEffect(() => {
+    const getIdHandler = (event: any) => {
       if (
         event.origin === 'https://youngwuk2.cafe24.com' ||
         event.origin === 'https://i-m-all.com' ||
@@ -35,8 +44,10 @@ const Main = () => {
       ) {
         // setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
       }
-      setMessage({ userId: null, type: 'coin' }); // 아이프레임 실제
-    });
+      setMessage({ userId: '1351744123@k', type: 'coin' }); // 아이프레임 실제
+    };
+    window.addEventListener('message', event => getIdHandler(event));
+    return () => window.removeEventListener('message', getIdHandler);
   }, []);
 
   useEffect(() => {
@@ -57,12 +68,21 @@ const Main = () => {
   }
 
   const loginHandler = () => {
-    window.parent.postMessage('login', '*');
+    window.parent.postMessage({ status: 'login-check', value: 'login' }, '*');
+  };
+  const contentHeightHandler = () => {
+    const bodyHeight = bodyRef.current!.offsetHeight;
+    console.log(bodyHeight);
+    window.parent.postMessage({ status: 'height', value: bodyHeight }, '*');
+  };
+
+  const imgLoadHandler = () => {
+    setImageLoaded(true);
   };
 
   return (
     <S.Wrapper>
-      <S.ContentWrapper>
+      <S.ContentWrapper ref={bodyRef}>
         <>
           <img src='/images/background.jpg' alt='상품모음' />
           {message!.userId ? (
@@ -90,8 +110,9 @@ const Main = () => {
             </button>
           )}
           <img
-            src='https://img.i-m-all.com/자사몰/이벤트/2023마음이벤트/고객감사이벤트_04.jpg'
+            src='/images/고객감사이벤트_04.jpg'
             alt='무슨상품?'
+            onLoad={imgLoadHandler}
           />
         </>
       </S.ContentWrapper>

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Wrapper = styled.section`
   width: 100%;
   height: 100vh;
+  /* max-width: 800px; */
+  /* margin: 0 auto; */
 `;
 
 export const ContentWrapper = styled.div`
