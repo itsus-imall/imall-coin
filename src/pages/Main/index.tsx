@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 import * as S from './styled';
@@ -26,63 +26,78 @@ const Main = () => {
   const [prize, setPrize] = useState('');
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const bodyRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (bodyRef.current) {
-      contentHeightHandler();
+  const loginHandler = () => {
+    window.parent.postMessage({ status: 'login-check', value: 'login' }, '*');
+  };
+  const windowHeightHandler = () => {
+    const element = document.querySelector('.content-wrapper') as HTMLElement;
+    window.parent.postMessage(
+      { status: 'height', value: element.clientHeight },
+      '*',
+    );
+  };
+  const imgLoadHandler = () => {
+    setImageLoaded(true);
+  };
+  const getIdHandler = (event: any) => {
+    if (
+      event.origin === 'https://youngwuk2.cafe24.com' ||
+      event.origin === 'https://i-m-all.com' ||
+      event.origin === 'https://m.i-m-all.com' ||
+      event.origin === 'https://www.i-m-all.com'
+    ) {
+      // setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
     }
-  }, [imageLoaded]);
+  };
+  const getCoinHandler = useCallback(async () => {
+    const { data } = await axios.post(
+      process.env.REACT_APP_GET_MEMO_URL!,
+      message,
+    );
+    setCoin(data);
+  }, [message]);
 
   useEffect(() => {
-    const getIdHandler = (event: any) => {
-      if (
-        event.origin === 'https://youngwuk2.cafe24.com' ||
-        event.origin === 'https://i-m-all.com' ||
-        event.origin === 'https://m.i-m-all.com' ||
-        event.origin === 'https://www.i-m-all.com'
-      ) {
-        // setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
-      }
-      setMessage({ userId: '1351744123@k', type: 'coin' }); // 아이프레임 실제
-    };
+    if (!loading && imageLoaded) windowHeightHandler();
+  }, [imageLoaded, loading]);
+
+  useEffect(() => {
+    setMessage({ userId: '1351744123@k', type: 'coin' }); // 아이프레임 실제
     window.addEventListener('message', event => getIdHandler(event));
     return () => window.removeEventListener('message', getIdHandler);
   }, []);
 
   useEffect(() => {
     if (!message) return;
-    const getCoin = async () => {
-      const { data } = await axios.post(
-        process.env.REACT_APP_GET_MEMO_URL!,
-        message,
-      );
-      setCoin(data);
-    };
-    if (message.userId) getCoin();
+    if (message.userId) getCoinHandler();
     setLoading(false);
-  }, [message]);
+  }, [message, getCoinHandler]);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout | null = null;
+    const handleResize = () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        windowHeightHandler();
+      }, 300);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   if (loading) {
     return <Loading />;
   }
-
-  const loginHandler = () => {
-    window.parent.postMessage({ status: 'login-check', value: 'login' }, '*');
-  };
-  const contentHeightHandler = () => {
-    const bodyHeight = bodyRef.current!.offsetHeight;
-    console.log(bodyHeight);
-    window.parent.postMessage({ status: 'height', value: bodyHeight }, '*');
-  };
-
-  const imgLoadHandler = () => {
-    setImageLoaded(true);
-  };
-
   return (
     <S.Wrapper>
-      <S.ContentWrapper ref={bodyRef}>
+      <S.ContentWrapper className='content-wrapper'>
         <>
           <img src='/images/background.jpg' alt='상품모음' />
           {message!.userId ? (
