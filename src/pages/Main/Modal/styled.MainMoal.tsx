@@ -1,17 +1,24 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.section`
+export const Wrapper = styled.section<{ count: number }>`
   width: 80%;
   max-width: 800px;
   background: #fff;
   position: relative;
   padding: 30px;
   box-sizing: border-box;
-  position: relative;
   border-radius: 15px 15px 0 0;
+  margin-top: 80px;
   .box {
     width: 100%;
     cursor: pointer;
+    display: none;
+  }
+  img.box:nth-child(${props => props.count}) {
+    display: block;
+  }
+  img.box.end {
+    display: block;
   }
   .prize {
     height: 66%;

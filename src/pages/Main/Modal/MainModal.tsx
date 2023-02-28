@@ -47,11 +47,23 @@ const MainModal = ({ setModalShow, prize, userId }: IProps) => {
         {prize === '' ? (
           '사용할 코인이 없습니다.'
         ) : (
-          <img
-            className='box'
-            src={`/images/이벤트상자_00${clickCounter}.jpg`}
-            alt='선물상자'
-          />
+          <>
+            <img
+              className='box'
+              src='/images/이벤트상자_001.jpg'
+              alt='선물상자'
+            />
+            <img
+              className='box'
+              src='/images/이벤트상자_002.jpg'
+              alt='선물상자'
+            />
+            <img
+              className='box'
+              src='/images/이벤트상자_003.jpg'
+              alt='선물상자'
+            />
+          </>
         )}
         <S.CheckButton>
           {prize === '' ? '닫기' : '선물을 받을려면 화면을 클릭하세요!'}
@@ -65,7 +77,7 @@ const MainModal = ({ setModalShow, prize, userId }: IProps) => {
       <>
         <div className='content'>
           <img
-            className='box'
+            className='box end'
             src='/images/이벤트상자_004.jpg'
             alt='선물상자'
           />
@@ -94,7 +106,7 @@ const MainModal = ({ setModalShow, prize, userId }: IProps) => {
   };
 
   return (
-    <S.Wrapper>
+    <S.Wrapper count={clickCounter}>
       <S.Contents onClick={prizeOpenHandler}>
         {clickCounter > 3 ? <PrizeResult /> : <PrizeOpen />}
       </S.Contents>

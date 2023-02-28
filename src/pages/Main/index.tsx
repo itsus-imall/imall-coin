@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import * as S from './styled';
@@ -46,7 +46,7 @@ const Main = () => {
       event.origin === 'https://m.i-m-all.com' ||
       event.origin === 'https://www.i-m-all.com'
     ) {
-      // setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
+      setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
     }
   };
   const getCoinHandler = useCallback(async () => {
@@ -62,8 +62,8 @@ const Main = () => {
   }, [imageLoaded, loading]);
 
   useEffect(() => {
-    setMessage({ userId: '1351744123@k', type: 'coin' }); // 아이프레임 실제
     window.addEventListener('message', event => getIdHandler(event));
+    // setMessage({ userId: '1351744123@k', type: 'coin' });
     return () => window.removeEventListener('message', getIdHandler);
   }, []);
 
