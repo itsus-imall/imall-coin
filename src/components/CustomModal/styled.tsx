@@ -5,7 +5,7 @@ export const Wrapper = styled.section`
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;

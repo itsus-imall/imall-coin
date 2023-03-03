@@ -5,14 +5,15 @@ export const Wrapper = styled.section<{ count: number }>`
   max-width: 800px;
   background: #fff;
   position: relative;
-  padding: 30px;
+  padding: 10px 30px;
   box-sizing: border-box;
   border-radius: 15px 15px 0 0;
-  margin-top: 80px;
+  margin-top: -50px;
   .box {
-    width: 100%;
+    width: 70%;
     cursor: pointer;
     display: none;
+    margin: 0 auto;
   }
   img.box:nth-child(${props => props.count}) {
     display: block;
