@@ -25,8 +25,6 @@ const PrizeProdutForm = ({ modalCheckHandler, tax }: IProps) => {
   const phoneNumberRef = useRef<HTMLInputElement>(null);
   const idNumberRef = useRef<HTMLInputElement>(null);
 
-  console.log(tax);
-
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const name = nameRef.current!.value;

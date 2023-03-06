@@ -8,7 +8,7 @@ export const Wrapper = styled.section<{ count: number }>`
   padding: 10px 30px;
   box-sizing: border-box;
   border-radius: 15px 15px 0 0;
-  margin-top: -50px;
+  margin-top: 50px;
   .box {
     width: 70%;
     cursor: pointer;
