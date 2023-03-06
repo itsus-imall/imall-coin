@@ -8,6 +8,9 @@ import CustomModal from '../../components/CustomModal';
 import MainModal from './Modal/MainModal';
 import PickButton from '../../components/PickButton';
 import TotalPrize from './TotalPrize';
+import Explantion from './Explantion';
+
+import './style.css';
 
 export interface ICoin {
   total?: number;
@@ -131,6 +134,7 @@ const Main = () => {
             onLoad={imgLoadHandler}
           />
           <TotalPrize />
+          <Explantion />
         </>
       </S.ContentWrapper>
     </S.Wrapper>

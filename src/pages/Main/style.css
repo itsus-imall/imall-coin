@@ -1,0 +1,83 @@
+.total-prize-count-wrapper {
+  width: 86%;
+  padding: 30px 20px;
+  background: #f1f1f1;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+.total-prize-count-wrapper .title {
+  text-align: center;
+}
+.total-prize-count-wrapper .title p {
+  color: var(--point-red);
+  margin-bottom: 10px;
+}
+.total-prize-count-wrapper .title h2 {
+  font-size: 24px;
+}
+.total-prize-count-wrapper .contents {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.total-prize-count-wrapper .contents img {
+  width: 50px;
+}
+.total-prize-count-wrapper .contents .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+.total-prize-count-wrapper .contents .content img {
+  flex: 0 0 50px;
+  margin-right: 5%;
+}
+.total-prize-count-wrapper .contents .content p {
+  flex: 0 0 calc(80% - 50px);
+  font-size: 14px;
+}
+.total-prize-count-wrapper .contents .content span {
+  flex: 0 0 15%;
+  text-align: right;
+  white-space: nowrap;
+  font-size: 15px;
+}
+.explanation-wrapper {
+  margin: 20px 7%;
+  padding: 30px 15px;
+  background: #f1f1f1;
+  border-radius: 15px;
+  margin-top: 0px;
+  text-align: center;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  word-break: keep-all;
+}
+.explanation-wrapper h2 {
+  font-size: 32px;
+}
+.explanation-wrapper h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.explanation-wrapper ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+.explanation-wrapper ul li {
+  color: #717171;
+}
+.explanation-wrapper ul li::before {
+  content: '- ';
+}
+.explanation-wrapper ul ul {
+  padding-left: 20px;
+}
+.explanation-wrapper ul ul li::before {
+  content: '* ';
+}

@@ -28,7 +28,7 @@ const TotalPrize = () => {
               alt='prize'
             />
             <p>iPad Air 10.9 Wi-Fi 64GB</p>
-            <span>{`${prizeCount[0]}명`}</span>
+            <span>{`${prizeCount[0] ?? 0}명`}</span>
           </div>
           <div className='content'>
             <img
@@ -36,7 +36,7 @@ const TotalPrize = () => {
               alt='prize'
             />
             <p>에어팟 3세대</p>
-            <span>{`${prizeCount[1]}명`}</span>
+            <span>{`${prizeCount[1] ?? 0}명`}</span>
           </div>
           <div className='content'>
             <img
@@ -44,7 +44,7 @@ const TotalPrize = () => {
               alt='prize'
             />
             <p>신세계백화점 상품권 10만원</p>
-            <span>{`${prizeCount[2]}명`}</span>
+            <span>{`${prizeCount[2] ?? 0}명`}</span>
           </div>
           <div className='content'>
             <img
@@ -52,7 +52,7 @@ const TotalPrize = () => {
               alt='prize'
             />
             <p>적립금 30,000원</p>
-            <span>{`${prizeCount[3]}명`}</span>
+            <span>{`${prizeCount[3] ?? 0}명`}</span>
           </div>
           <div className='content'>
             <img
@@ -60,7 +60,7 @@ const TotalPrize = () => {
               alt='prize'
             />
             <p>적립금 10,000원</p>
-            <span>{`${prizeCount[4]}명`}</span>
+            <span>{`${prizeCount[4] ?? 0}명`}</span>
           </div>
           <div className='content'>
             <img
@@ -68,7 +68,7 @@ const TotalPrize = () => {
               alt='prize'
             />
             <p>적립금 5,000원</p>
-            <span>{`${prizeCount[5]}명`}</span>
+            <span>{`${prizeCount[5] ?? 0}명`}</span>
           </div>
           <div className='content'>
             <img
@@ -76,7 +76,7 @@ const TotalPrize = () => {
               alt='prize'
             />
             <p>적립금 3,000원</p>
-            <span>{`${prizeCount[6]}명`}</span>
+            <span>{`${prizeCount[6] ?? 0}명`}</span>
           </div>
           <div className='content'>
             <img
@@ -84,7 +84,7 @@ const TotalPrize = () => {
               alt='prize'
             />
             <p>적립금 1,000원</p>
-            <span>{`${prizeCount[7]}명`}</span>
+            <span>{`${prizeCount[7] ?? 0}명`}</span>
           </div>
           <div className='content'>
             <img
@@ -92,7 +92,7 @@ const TotalPrize = () => {
               alt='prize'
             />
             <p>적립금 500원</p>
-            <span>{`${prizeCount[8]}명`}</span>
+            <span>{`${prizeCount[8] ?? 0}명`}</span>
           </div>
         </div>
       </div>
