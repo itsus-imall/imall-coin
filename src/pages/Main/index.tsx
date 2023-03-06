@@ -66,8 +66,7 @@ const Main = () => {
   }, [imageLoaded, loading]);
 
   useEffect(() => {
-    // window.addEventListener('message', event => getIdHandler(event));
-    setMessage({ userId: '1351744123@k', type: 'coin' });
+    window.addEventListener('message', event => getIdHandler(event));
     return () => window.removeEventListener('message', getIdHandler);
   }, []);
 
