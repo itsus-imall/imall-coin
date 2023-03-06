@@ -7,6 +7,7 @@ import Loading from '../../components/Loading';
 import CustomModal from '../../components/CustomModal';
 import MainModal from './Modal/MainModal';
 import PickButton from '../../components/PickButton';
+import TotalPrize from './TotalPrize';
 
 export interface ICoin {
   total?: number;
@@ -129,6 +130,7 @@ const Main = () => {
             alt='무슨상품?'
             onLoad={imgLoadHandler}
           />
+          <TotalPrize />
         </>
       </S.ContentWrapper>
     </S.Wrapper>
