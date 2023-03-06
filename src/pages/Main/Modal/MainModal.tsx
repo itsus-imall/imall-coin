@@ -22,6 +22,12 @@ const prizeImg: Record<string, string> = {
   '적립금 10,000원': '/images/이벤트상품_고액적립금.png',
 };
 
+const prizeTax: Record<string, string> = {
+  'iPad Air 10.9 Wi-Fi 64GB': '204,380원',
+  '에어팟 3세대': '59,180원',
+  '신세계 백화점 상품권 10만원': '22,000원',
+};
+
 const MainModal = ({ setModalShow, prize, userId }: IProps) => {
   const [productPrize, setProductPrize] = useState(false);
   const [clickCounter, setClickCounter] = useState(1);
@@ -91,7 +97,10 @@ const MainModal = ({ setModalShow, prize, userId }: IProps) => {
         <p className='prize-title'>{prize}</p>
         <p>당첨되셨습니다!</p>
         {productPrize ? (
-          <PrizeProdutForm modalCheckHandler={modalCheckHandler} />
+          <PrizeProdutForm
+            modalCheckHandler={modalCheckHandler}
+            tax={prizeTax[prize]}
+          />
         ) : (
           <S.CheckButton onClick={modalCheckHandler}>확인</S.CheckButton>
         )}

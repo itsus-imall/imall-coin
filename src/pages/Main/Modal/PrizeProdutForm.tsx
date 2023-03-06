@@ -16,13 +16,16 @@ interface IProps {
     phoneNumber,
     idNumber,
   }: IUserInfo) => void;
+  tax: string | undefined;
 }
 
-const PrizeProdutForm = ({ modalCheckHandler }: IProps) => {
+const PrizeProdutForm = ({ modalCheckHandler, tax }: IProps) => {
   const nameRef = useRef<HTMLInputElement>(null);
   const addressRef = useRef<HTMLInputElement>(null);
   const phoneNumberRef = useRef<HTMLInputElement>(null);
   const idNumberRef = useRef<HTMLInputElement>(null);
+
+  console.log(tax);
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -50,8 +53,7 @@ const PrizeProdutForm = ({ modalCheckHandler }: IProps) => {
         <h2>읽어주세요!</h2>
         <p>개인정보는 제세공과금 세금공제를 위해 입력받습니다.</p>
         <p>
-          국민은행/839801-01-540085/주식회사 잇츠어스로 제세공과금을 보내주시면
-          됩니다!
+          {`국민 839801-01-540085(예금주 : 주식회사 잇츠어스)로 제세공과금 ${tax}을 당첨자분 계좌로 입금하시면 확인 후 자동발송됩니다`}
         </p>
         <p>
           제세공과금을 입금 하시고 난 후 수령인 정보를 입력해주셔야 당첨상품을
