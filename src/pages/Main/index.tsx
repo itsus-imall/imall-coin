@@ -52,6 +52,7 @@ const Main = () => {
     ) {
       setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
     }
+    setMessage({ userId: 'wmh1243', type: 'coin' }); // 아이프레임 테스트
   };
   const getCoinHandler = useCallback(async () => {
     const { data } = await axios.post(

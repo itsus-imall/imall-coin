@@ -9,11 +9,16 @@
   text-align: center;
 }
 .total-prize-count-wrapper .title p {
-  color: var(--point-red);
+  color: var(--red);
   margin-bottom: 10px;
 }
 .total-prize-count-wrapper .title h2 {
   font-size: 24px;
+  margin-bottom: 5px;
+}
+.total-prize-count-wrapper .title span {
+  font-size: 14px;
+  color: gray;
 }
 .total-prize-count-wrapper .contents {
   display: flex;
