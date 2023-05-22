@@ -12,13 +12,14 @@ import Explantion from './Explantion';
 
 import './style.css';
 import CoinGive from './Give';
+import { loginHandler } from '../../service/login';
 
 export interface ICoin {
   total?: number;
   order?: [];
 }
 
-interface IMessage {
+export interface IMessage {
   userId: string | null;
   type: string;
 }
@@ -33,9 +34,6 @@ const Main = () => {
   const [prize, setPrize] = useState('');
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const loginHandler = () => {
-    window.parent.postMessage({ status: 'login-check', value: 'login' }, '*');
-  };
   const windowHeightHandler = () => {
     const element = document.querySelector('.content-wrapper') as HTMLElement;
     window.parent.postMessage(
@@ -106,7 +104,7 @@ const Main = () => {
     <S.Wrapper>
       <S.ContentWrapper className='content-wrapper'>
         <>
-          <CoinGive />
+          <CoinGive message={message} />
           <img src='/images/background.jpg' alt='상품모음' />
           {message!.userId ? (
             <>

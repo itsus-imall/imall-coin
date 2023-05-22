@@ -5,7 +5,7 @@ export const Wrapper = styled.section<{ count: number }>`
   max-width: 800px;
   background: #fff;
   position: relative;
-  padding: 10px 30px;
+  padding: 20px 30px;
   box-sizing: border-box;
   border-radius: 15px 15px 0 0;
   margin-top: 50px;
