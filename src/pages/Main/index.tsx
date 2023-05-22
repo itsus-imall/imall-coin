@@ -11,6 +11,7 @@ import TotalPrize from './TotalPrize';
 import Explantion from './Explantion';
 
 import './style.css';
+import CoinGive from './Give';
 
 export interface ICoin {
   total?: number;
@@ -21,6 +22,8 @@ interface IMessage {
   userId: string | null;
   type: string;
 }
+
+const test = true;
 
 const Main = () => {
   const [coin, setCoin] = useState<ICoin>({});
@@ -44,6 +47,7 @@ const Main = () => {
     setImageLoaded(true);
   };
   const getIdHandler = (event: any) => {
+    if (test) return setMessage({ userId: 'wmh1245', type: 'coin' }); // 아이프레임 테스트
     if (
       event.origin === 'https://youngwuk2.cafe24.com' ||
       event.origin === 'https://i-m-all.com' ||
@@ -52,7 +56,6 @@ const Main = () => {
     ) {
       setMessage({ userId: event.data.id, type: event.data.type }); // 아이프레임 실제
     }
-    // setMessage({ userId: 'wmh1243', type: 'coin' }); // 아이프레임 테스트
   };
   const getCoinHandler = useCallback(async () => {
     const { data } = await axios.post(
@@ -103,6 +106,7 @@ const Main = () => {
     <S.Wrapper>
       <S.ContentWrapper className='content-wrapper'>
         <>
+          <CoinGive />
           <img src='/images/background.jpg' alt='상품모음' />
           {message!.userId ? (
             <>
