@@ -37,6 +37,13 @@ export const GiveCoinButton = styled.button`
 `;
 
 export const CautionWrapper = styled.ul`
+  &::before {
+    content: '* 주의사항 *';
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
   background: #fff;
   padding: 20px;
   box-sizing: border-box;

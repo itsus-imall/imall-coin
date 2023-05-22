@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import * as S from './PrizeProductForm.styled';
+import * as S from './styled.PrizeProductForm';
 import { CheckButton } from './styled.MainMoal';
 
 export interface IUserInfo {

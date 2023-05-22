@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { IMessage } from '..';
+import CustomModal from '../../../components/CustomModal';
 import { loginHandler } from '../../../service/login';
+import GiveCoinModal from './Modal';
 import * as S from './styled';
 
 interface IProps {
@@ -7,8 +10,10 @@ interface IProps {
 }
 
 export default function CoinGive({ message }: IProps) {
+  const [modalShow, setModalShow] = useState(false);
+
   const giveCoinHandler = () => {
-    console.log('SDfs');
+    setModalShow(true);
   };
   return (
     <S.Wrapper>
@@ -40,6 +45,11 @@ export default function CoinGive({ message }: IProps) {
           마음을 받으시면 <span>교환 및 환불이 불가능</span>합니다.
         </li>
       </S.CautionWrapper>
+      {modalShow ? (
+        <CustomModal>
+          <GiveCoinModal setModalShow={setModalShow} />
+        </CustomModal>
+      ) : null}
     </S.Wrapper>
   );
 }
