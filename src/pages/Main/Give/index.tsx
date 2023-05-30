@@ -12,9 +12,8 @@ interface IProps {
 export default function CoinGive({ message }: IProps) {
   const [modalShow, setModalShow] = useState(false);
 
-  const giveCoinHandler = () => {
-    setModalShow(true);
-  };
+  const giveCoinHandler = () => setModalShow(true);
+
   return (
     <S.Wrapper>
       <S.TitleWrppaer className='title_wrapper'>
@@ -47,7 +46,7 @@ export default function CoinGive({ message }: IProps) {
       </S.CautionWrapper>
       {modalShow ? (
         <CustomModal>
-          <GiveCoinModal setModalShow={setModalShow} />
+          <GiveCoinModal setModalShow={setModalShow} message={message} />
         </CustomModal>
       ) : null}
     </S.Wrapper>

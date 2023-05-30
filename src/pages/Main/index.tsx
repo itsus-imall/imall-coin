@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import * as S from './styled';
@@ -26,7 +26,7 @@ export interface IMessage {
 
 const test = true;
 
-const Main = () => {
+const Main = React.memo(() => {
   const [coin, setCoin] = useState<ICoin>({});
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<null | IMessage>(null);
@@ -73,12 +73,6 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    if (!message) return;
-    if (message.userId) getCoinHandler();
-    setLoading(false);
-  }, [message, getCoinHandler]);
-
-  useEffect(() => {
     let timeoutId: NodeJS.Timeout | null = null;
     const handleResize = () => {
       if (timeoutId) {
@@ -97,7 +91,15 @@ const Main = () => {
     };
   }, []);
 
-  if (loading) {
+  useEffect(() => {
+    if (!message) return;
+    if (message.userId) {
+      getCoinHandler();
+      setLoading(false);
+    }
+  }, [message, getCoinHandler]);
+
+  if (loading && !message) {
     return <Loading />;
   }
   return (
@@ -141,6 +143,6 @@ const Main = () => {
       </S.ContentWrapper>
     </S.Wrapper>
   );
-};
+});
 
 export default Main;

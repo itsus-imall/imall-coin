@@ -9,7 +9,7 @@ const TotalPrize = () => {
   }, []);
 
   const getTotalPrizeCount = async () => {
-    const { data } = await axios.post(
+    const { data } = await axios.get(
       'https://itsus.co.kr:5555/api/imall/getTotalPrize',
     );
     setPrizeCount(data);
