@@ -61,3 +61,9 @@ export const DatePickerInput = styled(DatePicker)`
   text-align: center;
   border-radius: 5px;
 `;
+
+export const HeartResultWrapper = styled.div`
+  padding: 15px 0;
+  margin-top: 10px;
+  background: var(--light-gray);
+`;

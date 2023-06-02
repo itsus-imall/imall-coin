@@ -7,9 +7,10 @@ import * as S from './styled';
 
 interface IProps {
   message: IMessage | null;
+  getCoinHandler: () => void;
 }
 
-export default function CoinGive({ message }: IProps) {
+export default function CoinGive({ message, getCoinHandler }: IProps) {
   const [modalShow, setModalShow] = useState(false);
 
   const giveCoinHandler = () => setModalShow(true);
@@ -46,7 +47,11 @@ export default function CoinGive({ message }: IProps) {
       </S.CautionWrapper>
       {modalShow ? (
         <CustomModal>
-          <GiveCoinModal setModalShow={setModalShow} message={message} />
+          <GiveCoinModal
+            setModalShow={setModalShow}
+            message={message}
+            getCoinHandler={getCoinHandler}
+          />
         </CustomModal>
       ) : null}
     </S.Wrapper>

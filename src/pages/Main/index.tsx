@@ -106,7 +106,7 @@ const Main = React.memo(() => {
     <S.Wrapper>
       <S.ContentWrapper className='content-wrapper'>
         <>
-          <CoinGive message={message} />
+          <CoinGive message={message} getCoinHandler={getCoinHandler} />
           <img src='/images/background.jpg' alt='상품모음' />
           {message!.userId ? (
             <>
