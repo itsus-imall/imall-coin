@@ -74,7 +74,7 @@ const GiveCoinModal = ({ setModalShow, message, getCoinHandler }: IProps) => {
         <S.HeartResultWrapper>
           <p>
             {status[orders.status] ??
-              `${orders.newCoinAmount}개의 코인이 지급되었습니다.`}
+              `조건에 맞는 주문목록이 ${orders?.newOrders?.length}건이며, 총 ${orders.newCoinAmount}개의 마음이 지급되었습니다.`}
           </p>
         </S.HeartResultWrapper>
       ) : null}

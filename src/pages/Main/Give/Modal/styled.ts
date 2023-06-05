@@ -58,6 +58,7 @@ export const DateButton = styled.button`
   background: var(--red);
   color: #fff;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 export const DatePickerInput = styled(DatePicker)`
