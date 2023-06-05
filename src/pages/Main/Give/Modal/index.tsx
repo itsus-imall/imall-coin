@@ -38,7 +38,7 @@ const GiveCoinModal = ({ setModalShow, message, getCoinHandler }: IProps) => {
     if (!message?.userId || loading) return;
     const formatDate = formatDateToYYYYMMDD(date);
     const result = await axios.post(
-      'https://itsus.co.kr:5555/api/imall/giveCoinTest',
+      'https://itsus.co.kr:5555/api/imall/giveCoin',
       { ...message, date: formatDate },
     );
     setOrders(result.data);
