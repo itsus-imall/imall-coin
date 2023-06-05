@@ -6,7 +6,6 @@ import AdminLoginForm from './Login/AdminLoginForm';
 const Admin = () => {
   const message: Record<string, string> = {
     'non-id': '존재 하지 않는 아이디입니다.',
-    'minus-coin': '차감할 마음이 없습니다.',
   };
 
   const [login, setLogin] = useState(false);
@@ -34,10 +33,11 @@ const Admin = () => {
         reason,
       },
     );
+    console.log(result);
     alert(
       message[result.status] ??
-        `${Math.abs(result.coinAmount)}개의 마음이 ${
-          result.coinAmount > 0 ? '증가' : '차감'
+        `${Math.abs(result.newCoinAmount)}개의 마음이 ${
+          result.newCoinAmount > 0 ? '증가' : '차감'
         } 되었습니다.`,
     );
   };
