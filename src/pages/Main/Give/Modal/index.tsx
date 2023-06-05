@@ -6,8 +6,15 @@ import { IMessage } from '../..';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale'; //한국어 설정
-import { formatDateToYYYYMMDD } from '../../../../service/formatDate';
+import {
+  formatDateToYYYYMMDD,
+  formatThreeMonthsDay,
+} from '../../../../service/formatDate';
 import Loading from '../../../../components/Loading';
+
+const status: Record<string, string> = {
+  'zero-coin': '해당 기간에는 받을 수 있는 마음이 없습니다.',
+};
 
 interface IProps {
   setModalShow: Dispatch<SetStateAction<boolean>>;
@@ -21,12 +28,8 @@ interface IOrders {
   status: string;
 }
 
-export default function GiveCoinModal({
-  setModalShow,
-  message,
-  getCoinHandler,
-}: IProps) {
-  const [orders, setOrders] = useState<IOrders>();
+const GiveCoinModal = ({ setModalShow, message, getCoinHandler }: IProps) => {
+  const [orders, setOrders] = useState<IOrders | null>(null);
   const [date, setDate] = useState<Date>(new Date());
   const [loading, setLoading] = useState(false);
 
@@ -39,13 +42,10 @@ export default function GiveCoinModal({
       { ...message, date: formatDate },
     );
     setOrders(result.data);
-    if (result.data.status === 'ok') {
-      console.log('sdf');
-      getCoinHandler();
-    }
+    if (result.data.status === 'ok') getCoinHandler();
     setLoading(false);
   };
-  console.log(orders);
+  console.log(date);
   return (
     <S.Wrapper>
       <S.DateWrapper>
@@ -57,7 +57,7 @@ export default function GiveCoinModal({
             locale={ko}
             minDate={new Date('2023-03-01')}
             maxDate={new Date()}
-            dateFormat='yyyy년 MM월 dd일'
+            dateFormat={`${formatThreeMonthsDay(date)} ~ yyyy년 MM월 dd일`}
           />
           <S.DateButton onClick={() => getOrdersHandler()}>조회</S.DateButton>
         </div>
@@ -71,4 +71,6 @@ export default function GiveCoinModal({
       <S.CheckButton onClick={() => setModalShow(false)}>닫기</S.CheckButton>
     </S.Wrapper>
   );
-}
+};
+
+export default GiveCoinModal;

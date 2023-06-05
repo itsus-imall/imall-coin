@@ -40,14 +40,15 @@ export const DateWrapper = styled.div`
     margin-bottom: 5px;
     display: flex;
     gap: 12px;
+    flex-direction: column;
   }
 `;
 
 export const DateButton = styled.button`
   box-sizing: border-box;
   border: 0;
-  flex: 1 1 40%;
   border-radius: 5px;
+  padding: 7px 0;
 `;
 
 export const DatePickerInput = styled(DatePicker)`
