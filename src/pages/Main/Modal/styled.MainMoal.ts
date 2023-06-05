@@ -63,14 +63,14 @@ export const Contents = styled.div`
 
 export const CheckButton = styled.button`
   width: 100%;
-  height: 50px;
+  height: 35px;
   background: var(--red);
   position: absolute;
   bottom: 0;
   left: 0;
   transform: translateY(100%);
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
   color: #fff;
   border: 0;
   border-radius: 0 0 15px 15px;

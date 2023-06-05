@@ -13,7 +13,7 @@ import {
 import Loading from '../../../../components/Loading';
 
 const status: Record<string, string> = {
-  'zero-coin': '해당 기간에는 받을 수 있는 마음이 없습니다.',
+  'zero-coin': '받을 수 있는 마음이 없습니다.',
 };
 
 interface IProps {
@@ -45,11 +45,12 @@ const GiveCoinModal = ({ setModalShow, message, getCoinHandler }: IProps) => {
     if (result.data.status === 'ok') getCoinHandler();
     setLoading(false);
   };
-  console.log(date);
+
   return (
     <S.Wrapper>
       <S.DateWrapper>
         <div className='date_contents'>
+          <h2>마음 받기</h2>
           <S.DatePickerInput
             selected={date}
             shouldCloseOnSelect
@@ -57,17 +58,26 @@ const GiveCoinModal = ({ setModalShow, message, getCoinHandler }: IProps) => {
             locale={ko}
             minDate={new Date('2023-03-01')}
             maxDate={new Date()}
-            dateFormat={`${formatThreeMonthsDay(date)} ~ yyyy년 MM월 dd일`}
+            dateFormat={`${formatThreeMonthsDay(date)}  ~  yyyy.MM.dd  ▼`}
           />
-          <S.DateButton onClick={() => getOrdersHandler()}>조회</S.DateButton>
+          <S.DateButton onClick={() => getOrdersHandler()}>
+            날짜 선택 후 여기를 눌러주세요.
+          </S.DateButton>
         </div>
         <span>
           선택하신 날짜 기준 3개월 주문목록을 자동조회 후 마음이 지급됩니다.
         </span>
       </S.DateWrapper>
-      <S.HeartResultWrapper>
-        {loading ? <Loading /> : <p>{orders?.newCoinAmount}</p>}
-      </S.HeartResultWrapper>
+      {loading ? (
+        <Loading />
+      ) : orders ? (
+        <S.HeartResultWrapper>
+          <p>
+            {status[orders.status] ??
+              `${orders.newCoinAmount}개의 코인이 지급되었습니다.`}
+          </p>
+        </S.HeartResultWrapper>
+      ) : null}
       <S.CheckButton onClick={() => setModalShow(false)}>닫기</S.CheckButton>
     </S.Wrapper>
   );
