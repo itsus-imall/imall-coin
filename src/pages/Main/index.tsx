@@ -107,10 +107,12 @@ const Main = React.memo(() => {
       <S.ContentWrapper className='content-wrapper'>
         <>
           <CoinGive message={message} getCoinHandler={getCoinHandler} />
-          <img src='/images/background.jpg' alt='상품모음' />
+          <img src='/images/summer_gift.png' alt='상품모음' />
           {message!.userId ? (
             <>
-              <div>보유중인 마음 갯수 : {coin.total}개</div>
+              <div className='heart-counter'>
+                보유중인 마음 갯수 : <strong>{coin.total}개</strong>
+              </div>
               <PickButton
                 setModalShow={setModalShow}
                 message={message}
@@ -129,7 +131,7 @@ const Main = React.memo(() => {
             </>
           ) : (
             <button className='login' onClick={loginHandler}>
-              로그인 후 이용해주세요.
+              클릭하여 로그인 후 상품뽑기
             </button>
           )}
           <img

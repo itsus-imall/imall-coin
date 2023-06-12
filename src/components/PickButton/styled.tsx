@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  width: 200px;
   box-sizing: border-box;
-  padding: 15px 10px;
+  padding: 20px 30px;
   border: 0;
-  background: var(--red);
+  background: #fe3362;
   color: #fff;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 24px;
   cursor: pointer;
-  border-radius: 15px;
-  letter-spacing: 4px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 5px;
 `;

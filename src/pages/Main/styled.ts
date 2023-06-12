@@ -14,6 +14,7 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  background: #015aff;
   img {
     width: 100%;
   }
@@ -25,5 +26,13 @@ export const ContentWrapper = styled.div`
     border: 0;
     font-size: 18px;
     cursor: pointer;
+  }
+  .heart-counter {
+    color: #fff;
+    letter-spacing: 1px;
+    strong {
+      font-size: 18px;
+      text-decoration: underline;
+    }
   }
 `;

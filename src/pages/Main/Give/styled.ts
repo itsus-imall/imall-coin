@@ -23,7 +23,7 @@ export const TitleWrppaer = styled.div`
 `;
 
 export const GiveCoinButton = styled.button`
-  padding: 30px 30px;
+  padding: 20px 30px;
   font-size: 24px;
   font-weight: bold;
   background: #fe3362;
@@ -38,13 +38,14 @@ export const CautionWrapper = styled.ul`
   padding: 30px;
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
   color: #f1f1f1;
   & > img {
     width: calc(100% + 60px);
     transform: translateX(-30px);
   }
   li {
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 8px;
     line-height: 1.2;
     span {
