@@ -24,7 +24,7 @@ export interface IMessage {
   type: string;
 }
 
-const test = false;
+const test = true;
 
 const Main = React.memo(() => {
   const [coin, setCoin] = useState<ICoin>({});

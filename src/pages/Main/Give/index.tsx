@@ -28,8 +28,8 @@ export default function CoinGive({ message, getCoinHandler }: IProps) {
       </S.GiveCoinButton>
       <S.CautionWrapper>
         <li>
-          <span>실제결제금액 기준 1만원당</span> 마음 1개 지급됩니다. ( 19,900원
-          결제 시 마음 1개 지급, 20,000원 결제시 마음 2개 지급 )
+          <span>실제결제금액 기준 </span> 마음 1개 지급됩니다. ( 19,900원 결제
+          시 마음 1개 지급, 20,000원 결제시 마음 2개 지급 )
         </li>
         <li>
           주문상태가 <span>배송완료 주문건</span> 만 지급됩니다.
