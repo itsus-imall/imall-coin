@@ -17,10 +17,6 @@ export default function CoinGive({ message, getCoinHandler }: IProps) {
 
   return (
     <S.Wrapper>
-      <S.TitleWrppaer className='title_wrapper'>
-        <p>이벤트 참여방법</p>
-        <h2>마음을 받아가세요!</h2>
-      </S.TitleWrppaer>
       <S.GiveCoinButton
         onClick={message?.userId ? giveCoinHandler : loginHandler}
       >
@@ -28,9 +24,10 @@ export default function CoinGive({ message, getCoinHandler }: IProps) {
       </S.GiveCoinButton>
       <S.CautionWrapper>
         <li>
-          <span>실제결제금액 기준 </span> 마음 1개 지급됩니다. ( 19,900원 결제
-          시 마음 1개 지급, 20,000원 결제시 마음 2개 지급 )
+          마음 응모권은 <span>실제결제금액 기준 1만원당 마음 1개씩 지급</span>
+          됩니다.
         </li>
+        <img src='/images/썸머x마음_기획전02_06.jpg' alt='상품모음' />
         <li>
           주문상태가 <span>배송완료 주문건</span> 만 지급됩니다.
         </li>
