@@ -109,7 +109,7 @@ const Main = React.memo(() => {
           <CoinGive message={message} getCoinHandler={getCoinHandler} />
           <img src='/images/summer_gift.png' alt='상품모음' />
           {message!.userId ? (
-            <>
+            <S.ButtonWrapper>
               <div className='heart-counter'>
                 보유중인 마음 갯수 : <strong>{coin.total}개</strong>
               </div>
@@ -128,18 +128,21 @@ const Main = React.memo(() => {
                   />
                 </CustomModal>
               ) : null}
-            </>
+            </S.ButtonWrapper>
           ) : (
-            <button className='login' onClick={loginHandler}>
-              클릭하여 로그인 후 상품뽑기
-            </button>
+            <S.ButtonWrapper>
+              <button className='login' onClick={loginHandler}>
+                클릭하여 로그인 후 상품뽑기
+              </button>
+            </S.ButtonWrapper>
           )}
           <img
-            src='/images/고객감사이벤트_04.jpg'
+            src='/images/썸머x마음_기획전02_10.jpg'
             alt='무슨상품?'
             onLoad={imgLoadHandler}
           />
           <TotalPrize />
+          <img src='/images/썸머x마음_기획전02_12.jpg' alt='title' />
           <Explantion />
         </>
       </S.ContentWrapper>

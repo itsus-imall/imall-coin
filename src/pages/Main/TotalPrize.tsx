@@ -17,11 +17,6 @@ const TotalPrize = () => {
   return (
     <>
       <div className='total-prize-count-wrapper'>
-        <div className='title'>
-          <p>누가누가 당첨됐나?</p>
-          <h2>현재 당첨 현황</h2>
-          <span>당첨 상품의 개수 제한은 없습니다</span>
-        </div>
         <div className='contents'>
           <div className='content'>
             <img

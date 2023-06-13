@@ -10,4 +10,5 @@ export const Button = styled.button`
   font-size: 24px;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 5px;
+  margin-bottom: 20px;
 `;
