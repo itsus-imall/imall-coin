@@ -41,7 +41,6 @@ export const CautionWrapper = styled.ul`
   overflow: hidden;
   color: #f1f1f1;
   & > img {
-    width: calc(100% + 60px);
     transform: translateX(-30px);
   }
   li {

@@ -18,7 +18,7 @@ export const ContentWrapper = styled.div`
     width: 100%;
   }
   .login {
-    background: #fe3362;
+    background: var(--red);
     padding: 20px 30px;
     color: #fff;
     border: 0;

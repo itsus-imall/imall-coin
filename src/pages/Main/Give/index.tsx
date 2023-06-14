@@ -27,7 +27,11 @@ export default function CoinGive({ message, getCoinHandler }: IProps) {
           마음 응모권은 <span>실제결제금액 기준 1만원당 마음 1개씩 지급</span>
           됩니다.
         </li>
-        <img src='/images/썸머x마음_기획전02_06.jpg' alt='상품모음' />
+        <img
+          src='/images/썸머x마음_기획전02_06.jpg'
+          alt='상품모음'
+          style={{ width: 'calc(100% + 60px)' }}
+        />
         <li>
           <span>2023년3월1일 이후 주문건부터</span> 지급됩니다.
         </li>
