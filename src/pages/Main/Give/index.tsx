@@ -29,9 +29,6 @@ export default function CoinGive({ message, getCoinHandler }: IProps) {
         </li>
         <img src='/images/썸머x마음_기획전02_06.jpg' alt='상품모음' />
         <li>
-          주문상태가 <span>배송완료 주문건만 지급</span>됩니다.
-        </li>
-        <li>
           <span>2023년3월1일 이후 주문건부터</span> 지급됩니다.
         </li>
         <li>
