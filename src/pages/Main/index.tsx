@@ -24,7 +24,7 @@ export interface IMessage {
   type: string;
 }
 
-const test = true;
+const test = false;
 
 const Main = React.memo(() => {
   const [coin, setCoin] = useState<ICoin>({});
@@ -102,6 +102,7 @@ const Main = React.memo(() => {
   if (loading && !message) {
     return <Loading />;
   }
+
   return (
     <S.Wrapper>
       <S.ContentWrapper className='content-wrapper'>

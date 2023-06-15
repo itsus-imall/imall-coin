@@ -7,7 +7,6 @@ interface IProps {
 
 const CustomModal = ({ children }: IProps) => {
   const potalElement = document.querySelector('#modal');
-
   return (
     <>
       {createPortal(

@@ -73,9 +73,19 @@ export const DatePickerInput = styled(DatePicker)`
 
 export const HeartResultWrapper = styled.div`
   padding: 15px 10px;
-  background: var(--light-gray);
-  p {
+  background: #e0edfe;
+  ul {
     font-size: 15px;
-    text-align: center;
+    word-break: keep-all;
+    line-height: 1.2;
+    li {
+      margin-bottom: 10px;
+      strong {
+        text-decoration: underline;
+      }
+    }
+    li:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
