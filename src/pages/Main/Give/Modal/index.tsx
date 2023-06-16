@@ -13,7 +13,8 @@ import {
 import Loading from '../../../../components/Loading';
 
 const status: Record<string, string> = {
-  'zero-coin': '받을 수 있는 마음이 없습니다.',
+  'zero-coin':
+    '받을 수 있는 마음이 없습니다. 날짜를 변경 후 다시 시도해 주세요.',
 };
 
 interface IProps {
@@ -25,6 +26,7 @@ interface IProps {
 interface IOrders {
   newCoinAmount?: number;
   newOrders?: string[];
+  bonusCoinAmount?: number;
   status: string;
 }
 
@@ -72,10 +74,21 @@ const GiveCoinModal = ({ setModalShow, message, getCoinHandler }: IProps) => {
         <Loading />
       ) : orders ? (
         <S.HeartResultWrapper>
-          <p>
-            {status[orders.status] ??
-              `조건에 맞는 주문목록이 ${orders?.newOrders?.length}건이며, 총 ${orders.newCoinAmount}개의 마음이 지급되었습니다.`}
-          </p>
+          <ul>
+            {status[orders.status] ?? (
+              <>
+                <li>
+                  조회 주문 건수 : <strong>{orders.newOrders!.length}건</strong>
+                </li>
+                <li>
+                  지급 마음 개수 : <strong>{orders.newCoinAmount}개</strong>
+                </li>
+                <li>
+                  보너스 마음 개수 : <strong>{orders.bonusCoinAmount}개</strong>
+                </li>
+              </>
+            )}
+          </ul>
         </S.HeartResultWrapper>
       ) : null}
       <S.CheckButton onClick={() => setModalShow(false)}>닫기</S.CheckButton>

@@ -1,9 +1,10 @@
 .total-prize-count-wrapper {
-  width: 86%;
+  width: 90%;
   padding: 30px 20px;
-  background: #f1f1f1;
+  background: #e0edfe;
   border-radius: 15px;
   box-sizing: border-box;
+  padding-top: 0;
 }
 .total-prize-count-wrapper .title {
   text-align: center;
@@ -49,12 +50,11 @@
   font-size: 15px;
 }
 .explanation-wrapper {
-  margin: 20px 7%;
+  margin: 20px 5%;
   padding: 30px 15px;
-  background: #f1f1f1;
+  background: #e0edfe;
   border-radius: 15px;
   margin-top: 0px;
-  text-align: center;
   line-height: 1.2;
   display: flex;
   flex-direction: column;
@@ -67,18 +67,26 @@
 .explanation-wrapper h3 {
   font-size: 18px;
   margin-bottom: 10px;
+  background: #1f3656;
+  color: #fff;
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-weight: 400;
 }
 .explanation-wrapper ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  text-align: left;
+  padding-left: 10px;
 }
 .explanation-wrapper ul li {
   color: #717171;
+  letter-spacing: -1px;
+  font-size: 14px;
 }
 .explanation-wrapper ul li::before {
-  content: '- ';
+  content: '※ ';
 }
 .explanation-wrapper ul ul {
   padding-left: 20px;

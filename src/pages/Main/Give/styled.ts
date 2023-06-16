@@ -1,16 +1,14 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
-  width: 86%;
-  background: var(--light-gray);
-  padding: 30px;
-  border-radius: 15px;
+  width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  background: #015aff;
 `;
 
 export const TitleWrppaer = styled.div`
@@ -25,39 +23,36 @@ export const TitleWrppaer = styled.div`
 `;
 
 export const GiveCoinButton = styled.button`
-  width: 200px;
-  padding: 15px 10px;
-  font-size: 1rem;
-  border-radius: 15px;
+  padding: 20px 30px;
+  font-size: 24px;
   font-weight: bold;
-  background: #fff;
-  border: 2px solid var(--red);
+  background: #fe3362;
   cursor: pointer;
-  color: var(--red);
+  color: #fff;
+  border: 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 5px;
 `;
 
 export const CautionWrapper = styled.ul`
-  &::before {
-    content: '* 주의사항 *';
-    text-align: center;
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  background: #fff;
-  padding: 20px;
+  width: 100%;
+  padding: 30px;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+  color: #f1f1f1;
+  & > img {
+    transform: translateX(-30px);
+  }
   li {
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     line-height: 1.2;
     span {
-      color: var(--red);
       font-weight: bold;
     }
   }
   li::before {
-    content: '- ';
+    content: '※ ';
   }
   li:last-child {
     margin-bottom: 0;

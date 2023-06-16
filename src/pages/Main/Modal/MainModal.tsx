@@ -51,7 +51,7 @@ const MainModal = ({ setModalShow, prize, userId }: IProps) => {
     return (
       <>
         {prize === '' ? (
-          '사용할 코인이 없습니다.'
+          '사용 가능한 마음이 없습니다.'
         ) : (
           <>
             <img
